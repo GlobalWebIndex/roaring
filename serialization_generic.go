@@ -27,9 +27,7 @@ func (b *arrayContainer) readFrom(stream io.Reader) (int, error) {
 }
 
 func (b *bitmapContainer) writeTo(stream io.Writer) (int, error) {
-	if b.cardinality <= arrayDefaultMaxSize {
-		return 0, errors.New("refusing to write bitmap container with cardinality of array container")
-	}
+
 
 	// Write set
 	buf := make([]byte, 8*len(b.bitmap))
